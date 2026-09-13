@@ -1,2 +1,2 @@
-# COSMO-Ecom.-
+# COSMO-Ecom.
   A Ecommerce Project frontend
