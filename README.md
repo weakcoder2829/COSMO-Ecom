@@ -1,4 +1,4 @@
-# COSMO E-Commerce Storefront
+# COSMO E-Commerce frontend 
 
 **COSMO** is an editorial-grade, multi-department fashion and lifestyle storefront inspired by contemporary luxury fashion houses. Built purely with semantic HTML5, vanilla CSS3, and modular ES6+ JavaScript, it delivers a responsive, lightning-fast shopping experience across **Ladies**, **Men**, **Kids**, and **Home** collections without any external framework overhead.
 
@@ -17,16 +17,4 @@
 
 ---
 
-## 🚀 Quick Start
 
-Run the storefront with any local web server:
-
-```bash
-# Using Node.js
-npx -y serve .
-
-# Using Python
-python -m http.server 5500
-```
-
-Open `http://localhost:5500/index.html` in your browser.
