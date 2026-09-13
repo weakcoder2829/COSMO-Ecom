@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results | COSMO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="search">
+    <!-- Main Navigation Header (Exact Pure White COSMO Header) -->
+    <header class="hm-header" id="hmHeader">
+                <div class="header-container">
+            <!-- Left: Category Navigation Links (LADIES, MEN, KIDS, HOME) -->
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="hm-category-nav" id="categoryNav">
+                    <div class="nav-item-wrapper" data-menu="ladies">
+                        <a href="index.html" class="nav-link " data-category="ladies">LADIES</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="men">
+                        <a href="men.html" class="nav-link " data-category="men">MEN</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="kids">
+                        <a href="kids.html" class="nav-link " data-category="kids">KIDS</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="home">
+                        <a href="home.html" class="nav-link " data-category="home">HOME</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Middle: Brand Logo Centered -->
+            <div class="header-center">
+                <a href="index.html" class="cosmo-logo-link" id="logoLink" aria-label="COSMO Home">
+                    <span class="cosmo-brand-logo">COSMO</span>
+                </a>
+            </div>
+
+            <!-- Right: Text Nav (ACCOUNT, SEARCH, FAV ICON, CART [0]) -->
+            <div class="header-right">
+                <button class="header-nav-text-btn" id="accountModalBtn" aria-label="Account">ACCOUNT</button>
+                <button class="header-nav-text-btn" id="searchTriggerBtn" aria-label="Search">SEARCH</button>
+                <a href="cart.html" class="header-nav-text-btn" id="bagTriggerBtn" aria-label="Shopping Cart">CART [<span id="bagBadge">0</span>]</a>
+                <button class="header-fav-btn" id="wishlistTriggerBtn" aria-label="Favorites">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="header-badge" id="wishlistBadge">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Interactive Mega Menu Dropdown Panel -->
+        <div class="hm-mega-menu" id="hmMegaMenu">
+            <div class="mega-menu-content" id="megaMenuContent">
+                <!-- Injected dynamically -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Search Results Page -->
+    <main class="search-page-main" id="searchPageMain">
+        <div class="search-header-container">
+            <!-- Breadcrumbs -->
+            <div class="search-breadcrumb-bar">
+                <div class="search-breadcrumb-container">
+                    <a href="index.html" class="search-breadcrumb-link">COSMO.COM</a>
+                    <span class="search-breadcrumb-sep">/</span>
+                    <span class="search-breadcrumb-current">SEARCH RESULTS</span>
+                </div>
+            </div>
+
+            <!-- Hero Search Heading (Screenshot 1 Exact replica) -->
+            <div class="search-hero-header">
+                <div class="search-sub-label" id="searchSubLabel">SEARCH RESULT</div>
+                <h1 class="search-query-heading" id="searchQueryHeading">SHIRTS</h1>
+            </div>
+
+            <!-- Category Section Navigation Tabs (ALL, LADIES, MEN, KIDS, HOME) -->
+            <div class="search-category-tabs-wrapper">
+                <div class="search-category-tabs" id="searchCategoryTabs">
+                    <!-- Injected dynamically based on category matches -->
+                </div>
+            </div>
+
+            <!-- Meta Bar: Product Count & Filter Trigger -->
+            <div class="search-meta-bar">
+                <div class="search-product-count-text" id="searchProductCount">0 products</div>
+                <button type="button" class="search-filter-trigger-btn" id="searchFilterTriggerBtn">
+                    FILTER
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+                        <line x1="4" y1="21" x2="4" y2="14"></line>
+                        <line x1="4" y1="10" x2="4" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12" y2="3"></line>
+                        <line x1="20" y1="21" x2="20" y2="16"></line>
+                        <line x1="20" y1="12" x2="20" y2="3"></line>
+                        <line x1="1" y1="14" x2="7" y2="14"></line>
+                        <line x1="9" y1="8" x2="15" y2="8"></line>
+                        <line x1="17" y1="16" x2="23" y2="16"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Collapsible Filter Panel -->
+            <div class="search-filter-panel" id="searchFilterPanel">
+                <div class="search-filter-grid">
+                    <!-- Sort Selection -->
+                    <div class="search-filter-group">
+                        <h4>Sort By</h4>
+                        <select class="search-sort-select" id="searchSortSelect">
+                            <option value="recommended">Recommended</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest Arrivals</option>
+                        </select>
+                    </div>
+
+                    <!-- Color Filter Options -->
+                    <div class="search-filter-group">
+                        <h4>Color</h4>
+                        <div class="search-filter-options">
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-color-chk" value="white"> White
+                            </label>
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-color-chk" value="blue"> Blue
+                            </label>
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-color-chk" value="pink"> Pink
+                            </label>
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-color-chk" value="black"> Black
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Size Filter Options -->
+                    <div class="search-filter-group">
+                        <h4>Size</h4>
+                        <div class="search-filter-options">
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-size-chk" value="XS"> XS
+                            </label>
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-size-chk" value="S"> S
+                            </label>
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-size-chk" value="M"> M
+                            </label>
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-size-chk" value="L"> L
+                            </label>
+                            <label class="search-filter-option">
+                                <input type="checkbox" class="search-size-chk" value="XL"> XL
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-filter-actions">
+                    <button type="button" class="search-clear-filters-btn" id="searchClearFiltersBtn">CLEAR ALL</button>
+                    <button type="button" class="search-apply-filters-btn" id="searchApplyFiltersBtn">APPLY
+                        FILTERS</button>
+                </div>
+            </div>
+
+            <!-- Minimalist 4-Column Product Grid (Screenshot 1) -->
+            <div class="search-products-grid" id="searchProductsGrid">
+                <!-- Products rendered dynamically -->
+            </div>
+
+            <!-- Empty Search Results State -->
+            <div class="search-no-results" id="searchNoResults" style="display: none;">
+                <div class="search-no-results-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <h3>NO MATCHING PRODUCTS FOUND</h3>
+                <p>We couldn't find matches for your search. Try another query or check out popular searches below:</p>
+                <div class="search-suggested-tags">
+                    <button type="button" class="search-tag-chip" onclick="handleSearchSubmit('shirts')">Shirts</button>
+                    <button type="button" class="search-tag-chip" onclick="handleSearchSubmit('dress')">Dresses</button>
+                    <button type="button" class="search-tag-chip"
+                        onclick="handleSearchSubmit('hoodie')">Hoodies</button>
+                    <button type="button" class="search-tag-chip" onclick="handleSearchSubmit('jeans')">Jeans</button>
+                    <button type="button" class="search-tag-chip"
+                        onclick="handleSearchSubmit('jacket')">Jackets</button>
+                </div>
+            </div>
+
+            <!-- Bottom Pagination & Load More (Screenshot 2) -->
+            <div class="search-bottom-controls" id="searchBottomControls">
+                <button type="button" class="search-load-more-btn" id="searchLoadMoreBtn">LOAD NEXT PAGE</button>
+                <div class="search-pagination-bar">
+                    <button class="search-page-arrow" id="searchPrevPage" aria-label="Previous page">&lsaquo;</button>
+                    <button class="search-page-btn active" onclick="setSearchPage(1)">1</button>
+                    <button class="search-page-btn" onclick="setSearchPage(2)">2</button>
+                    <button class="search-page-btn" onclick="setSearchPage(3)">3</button>
+                    <button class="search-page-btn" onclick="setSearchPage(4)">4</button>
+                    <button class="search-page-btn" onclick="setSearchPage(5)">5</button>
+                    <span class="search-page-ellipsis">...</span>
+                    <button class="search-page-btn" onclick="setSearchPage(35)">35</button>
+                    <button class="search-page-arrow" id="searchNextPage" aria-label="Next page">&rsaquo;</button>
+                </div>
+            </div>
+
+            <!-- Customer Feedback Survey (Screenshot 2 exact replica) -->
+            <div class="search-feedback-container">
+                <h4 class="search-feedback-heading">HOW HAPPY ARE YOU WITH YOUR SEARCH RESULTS?</h4>
+                <div class="search-feedback-faces-row">
+                    <!-- Face 1: Not Happy -->
+                    <div class="search-feedback-face-col">
+                        <button type="button" class="search-face-btn" onclick="submitSearchRating(1, this)"
+                            title="Not happy">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="8" y1="9" x2="8.01" y2="9" stroke-width="2.5"></line>
+                                <line x1="16" y1="9" x2="16.01" y2="9" stroke-width="2.5"></line>
+                                <path d="M16 16c-.8-1.5-2.2-2.5-4-2.5s-3.2 1-4 2.5"></path>
+                            </svg>
+                        </button>
+                        <span class="search-face-label">Not happy</span>
+                    </div>
+
+                    <!-- Face 2 -->
+                    <div class="search-feedback-face-col">
+                        <button type="button" class="search-face-btn" onclick="submitSearchRating(2, this)"
+                            title="Somewhat unhappy">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="8" y1="9" x2="8.01" y2="9" stroke-width="2.5"></line>
+                                <line x1="16" y1="9" x2="16.01" y2="9" stroke-width="2.5"></line>
+                                <path d="M9 15.5c1-.5 2-.5 3 0s2 .5 3 0"></path>
+                            </svg>
+                        </button>
+                        <span class="search-face-label"></span>
+                    </div>
+
+                    <!-- Face 3: Neutral -->
+                    <div class="search-feedback-face-col">
+                        <button type="button" class="search-face-btn" onclick="submitSearchRating(3, this)"
+                            title="Neutral">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="8" y1="9" x2="8.01" y2="9" stroke-width="2.5"></line>
+                                <line x1="16" y1="9" x2="16.01" y2="9" stroke-width="2.5"></line>
+                                <line x1="8" y1="15" x2="16" y2="15"></line>
+                            </svg>
+                        </button>
+                        <span class="search-face-label"></span>
+                    </div>
+
+                    <!-- Face 4 -->
+                    <div class="search-feedback-face-col">
+                        <button type="button" class="search-face-btn" onclick="submitSearchRating(4, this)"
+                            title="Happy">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="8" y1="9" x2="8.01" y2="9" stroke-width="2.5"></line>
+                                <line x1="16" y1="9" x2="16.01" y2="9" stroke-width="2.5"></line>
+                                <path d="M8 14.5c1 1.2 2.2 2 4 2s3-0.8 4-2"></path>
+                            </svg>
+                        </button>
+                        <span class="search-face-label"></span>
+                    </div>
+
+                    <!-- Face 5: Very Happy -->
+                    <div class="search-feedback-face-col">
+                        <button type="button" class="search-face-btn" onclick="submitSearchRating(5, this)"
+                            title="Very happy">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="8" y1="9" x2="8.01" y2="9" stroke-width="2.5"></line>
+                                <line x1="16" y1="9" x2="16.01" y2="9" stroke-width="2.5"></line>
+                                <path d="M7.5 13.5c1 2 2.5 3 4.5 3s3.5-1 4.5-3"></path>
+                            </svg>
+                        </button>
+                        <span class="search-face-label">Very happy</span>
+                    </div>
+                </div>
+                <div class="search-feedback-thankyou" id="searchFeedbackThankyou">
+                    Thank you for your feedback! It helps us improve your shopping experience.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- COSMO Sign-In Modal -->
+    <div class="hm-modal-overlay" id="signInModalOverlay">
+        <div class="hm-signin-modal" id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signinTitle">
+            <button class="modal-close-icon" id="closeSignInModalBtn" aria-label="Close modal">✕</button>
+            <div class="signin-modal-content">
+                <h2 class="signin-title" id="signinTitle">SIGN IN</h2>
+                <p class="signin-subtitle">Sign in with your email or sign up to become a COSMO member.</p>
+                <form class="signin-form" id="signInForm">
+                    <div class="form-group">
+                        <label for="signinEmail" class="form-label">Email address *</label>
+                        <input type="email" id="signinEmail" required class="signin-input"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signinPassword" class="form-label">Password *</label>
+                        <input type="password" id="signinPassword" required class="signin-input" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="signin-submit-btn">SIGN IN</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- COSMO Shopping Bag Drawer -->
+    <div class="hm-bag-drawer" id="hmBagDrawer" aria-hidden="true">
+        <div class="bag-header">
+            <h3 class="bag-title">SHOPPING BAG</h3>
+            <button class="bag-close-btn" id="closeBagDrawerBtn" aria-label="Close bag">✕</button>
+        </div>
+        <div class="bag-items-list" id="bagItemsList"></div>
+        <div class="bag-footer">
+            <div class="breakdown-row">
+                <span>Order value:</span>
+                <span id="bagSubtotalVal">Rs. 0.00</span>
+            </div>
+            <div class="breakdown-row">
+                <span>Delivery:</span>
+                <span class="delivery-free">FREE</span>
+            </div>
+            <div class="breakdown-row total-row">
+                <span>Total:</span>
+                <span id="bagTotalVal">Rs. 0.00</span>
+            </div>
+            <button class="checkout-submit-btn" id="checkoutBtn">CONTINUE TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <!-- COSMO Wishlist Drawer -->
+    <div class="hm-wishlist-drawer" id="hmWishlistDrawer" aria-hidden="true">
+        <div class="bag-header">
+            <h3 class="bag-title">FAVORITES</h3>
+            <button class="bag-close-btn" id="closeWishlistDrawerBtn" aria-label="Close favorites">✕</button>
+        </div>
+        <div class="wishlist-items-list" id="wishlistItemsList"></div>
+    </div>
+
+    <!-- Global Dimming Backdrop -->
+    <div class="global-backdrop" id="globalBackdrop"></div>
+
+    <!-- Toast Notification -->
+    <div class="hm-toast" id="hmToast" role="status" aria-live="polite">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <div class="toast-msg" id="toastMsg">Added to shopping bag</div>
+    </div>
+
+    <!-- Dynamic Modular Footer -->
+    <div id="footerPlaceholder"></div>
+
+    <!-- Main Logic Script -->
+    <script src="main.js"></script>
+</body>
+
+</html>

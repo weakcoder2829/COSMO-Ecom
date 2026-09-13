@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | COSMO</title>
+    <meta name="description" content="Discover premium apparel, contemporary silhouettes, and timeless essentials at COSMO.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="product" data-theme="light" class="pdp-body">
+    <!-- Main Navigation Header (Exact Pure White COSMO Header) -->
+    <header class="hm-header" id="hmHeader">
+                <div class="header-container">
+            <!-- Left: Category Navigation Links (LADIES, MEN, KIDS, HOME) -->
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="hm-category-nav" id="categoryNav">
+                    <div class="nav-item-wrapper" data-menu="ladies">
+                        <a href="index.html" class="nav-link " data-category="ladies">LADIES</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="men">
+                        <a href="men.html" class="nav-link " data-category="men">MEN</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="kids">
+                        <a href="kids.html" class="nav-link " data-category="kids">KIDS</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="home">
+                        <a href="home.html" class="nav-link " data-category="home">HOME</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Middle: Brand Logo Centered -->
+            <div class="header-center">
+                <a href="index.html" class="cosmo-logo-link" id="logoLink" aria-label="COSMO Home">
+                    <span class="cosmo-brand-logo">COSMO</span>
+                </a>
+            </div>
+
+            <!-- Right: Text Nav (ACCOUNT, SEARCH, FAV ICON, CART [0]) -->
+            <div class="header-right">
+                <button class="header-nav-text-btn" id="accountModalBtn" aria-label="Account">ACCOUNT</button>
+                <button class="header-nav-text-btn" id="searchTriggerBtn" aria-label="Search">SEARCH</button>
+                <a href="cart.html" class="header-nav-text-btn" id="bagTriggerBtn" aria-label="Shopping Cart">CART [<span id="bagBadge">0</span>]</a>
+                <button class="header-fav-btn" id="wishlistTriggerBtn" aria-label="Favorites">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="header-badge" id="wishlistBadge">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Interactive Mega Menu Dropdown Panel -->
+        <div class="hm-mega-menu" id="hmMegaMenu">
+            <div class="mega-menu-content" id="megaMenuContent"></div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Bar -->
+    <nav class="pdp-breadcrumbs-bar" aria-label="Breadcrumb">
+        <div class="pdp-breadcrumbs-container" id="pdpBreadcrumbs">
+            <a href="index.html">COSMO</a>
+            <span class="pdp-bc-sep">/</span>
+            <a href="index.html" id="bcCategoryLink">LADIES</a>
+            <span class="pdp-bc-sep">/</span>
+            <span class="pdp-bc-current" id="bcProductTitle">PRODUCT</span>
+        </div>
+    </nav>
+
+    <!-- Main Product Section (2-Column Layout Matching Screenshots 1 & 2) -->
+    <main class="pdp-main-wrapper">
+        <div class="pdp-container" id="pdpContainer">
+            <!-- Dynamic PDP Content Rendered by main.js -->
+            <div class="pdp-loading-skeleton" style="padding: 60px 0; text-align: center; color: #888;">
+                Loading product details...
+            </div>
+        </div>
+    </main>
+
+    <!-- SIMILAR ITEMS CAROUSEL (Matching Screenshot 2 & 3) -->
+    <section class="pdp-related-section" id="similarItemsSection">
+        <div class="pdp-related-header">
+            <h2 class="pdp-related-title">SIMILAR ITEMS</h2>
+            <div class="pdp-carousel-nav">
+                <button type="button" class="pdp-nav-arrow" id="similarPrevBtn" aria-label="Previous items">&lsaquo;</button>
+                <button type="button" class="pdp-nav-arrow" id="similarNextBtn" aria-label="Next items">&rsaquo;</button>
+            </div>
+        </div>
+        <div class="pdp-carousel-track" id="similarItemsTrack">
+            <!-- Populated dynamically -->
+        </div>
+    </section>
+
+    <!-- OTHERS ALSO BOUGHT CAROUSEL (Matching Screenshot 3) -->
+    <section class="pdp-related-section pdp-others-section" id="othersAlsoBoughtSection">
+        <div class="pdp-related-header">
+            <h2 class="pdp-related-title">OTHERS ALSO BOUGHT</h2>
+            <div class="pdp-carousel-nav">
+                <button type="button" class="pdp-nav-arrow" id="othersPrevBtn" aria-label="Previous items">&lsaquo;</button>
+                <button type="button" class="pdp-nav-arrow" id="othersNextBtn" aria-label="Next items">&rsaquo;</button>
+            </div>
+        </div>
+        <div class="pdp-carousel-track" id="othersAlsoBoughtTrack">
+            <!-- Populated dynamically -->
+        </div>
+    </section>
+
+    <!-- Size Guide Modal -->
+    <div class="hm-modal-backdrop" id="sizeGuideModal" style="display:none;">
+        <div class="hm-modal-card" style="max-width: 520px; background: #ffffff; color: #111111; border: 1px solid #e8e8e8; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border-radius: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 800;">Size Guide</h3>
+                <button type="button" onclick="document.getElementById('sizeGuideModal').style.display='none'" style="background: none; border: none; color: #111111; font-size: 1.3rem; cursor: pointer;">✕</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #666666; margin-bottom: 16px;">Measurements refer to body dimensions, in centimetres (cm).</p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #111111; color: #111111;">
+                        <th style="padding: 10px 4px;">SIZE</th>
+                        <th style="padding: 10px 4px;">CHEST</th>
+                        <th style="padding: 10px 4px;">WAIST</th>
+                        <th style="padding: 10px 4px;">HIPS</th>
+                    </tr>
+                </thead>
+                <tbody style="color: #333333;">
+                    <tr style="border-bottom: 1px solid #eeeeee;"><td style="padding: 10px 4px; font-weight: 700;">XS</td><td>80-84</td><td>64-68</td><td>88-92</td></tr>
+                    <tr style="border-bottom: 1px solid #eeeeee;"><td style="padding: 10px 4px; font-weight: 700;">S</td><td>85-89</td><td>69-73</td><td>93-97</td></tr>
+                    <tr style="border-bottom: 1px solid #eeeeee;"><td style="padding: 10px 4px; font-weight: 700;">M</td><td>90-94</td><td>74-78</td><td>98-102</td></tr>
+                    <tr style="border-bottom: 1px solid #eeeeee;"><td style="padding: 10px 4px; font-weight: 700;">L</td><td>95-101</td><td>79-85</td><td>103-109</td></tr>
+                    <tr><td style="padding: 10px 4px; font-weight: 700;">XL</td><td>102-108</td><td>86-92</td><td>110-116</td></tr>
+                </tbody>
+            </table>
+            <button type="button" onclick="document.getElementById('sizeGuideModal').style.display='none'" style="width: 100%; margin-top: 24px; padding: 12px; background: #111111; color: #ffffff; font-weight: 700; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 2px;">Close</button>
+        </div>
+    </div>
+
+    <!-- COSMO Sign-In Modal -->
+    <div class="hm-modal-overlay" id="signInModalOverlay">
+        <div class="hm-signin-modal" id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signinTitle">
+            <button class="modal-close-icon" id="closeSignInModalBtn" aria-label="Close modal">✕</button>
+            <div class="signin-modal-content">
+                <h2 class="signin-title" id="signinTitle">SIGN IN</h2>
+                <p class="signin-subtitle">Sign in with your email or sign up to become a COSMO member.</p>
+                <form class="signin-form" id="signInForm">
+                    <div class="form-group">
+                        <label for="signinEmail" class="form-label">Email address *</label>
+                        <input type="email" id="signinEmail" required class="signin-input" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signinPassword" class="form-label">Password *</label>
+                        <input type="password" id="signinPassword" required class="signin-input" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="signin-submit-btn">SIGN IN</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- COSMO Wishlist Drawer -->
+    <div class="hm-wishlist-drawer" id="hmWishlistDrawer" aria-hidden="true">
+        <div class="bag-header">
+            <h3 class="bag-title">FAVORITES</h3>
+            <button class="bag-close-btn" id="closeWishlistDrawerBtn" aria-label="Close favorites">✕</button>
+        </div>
+        <div class="wishlist-items-list" id="wishlistItemsList"></div>
+    </div>
+
+    <!-- Global Dimming Backdrop -->
+    <div class="global-backdrop" id="globalBackdrop"></div>
+
+    <!-- Toast Notification -->
+    <div class="hm-toast" id="hmToast" role="status" aria-live="polite">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <div class="toast-msg" id="toastMsg">Added to shopping bag</div>
+    </div>
+
+    <!-- Modular Footer Placeholder -->
+    <div id="modularFooterPlaceholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="main.js"></script>
+</body>
+
+</html>

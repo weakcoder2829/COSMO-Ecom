@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Bag & Checkout | COSMO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-page="cart">
+    <!-- Main Navigation Header with Centered Categories -->
+    <header class="hm-header" id="hmHeader">
+        <div class="header-container">
+            <!-- Left: Category Navigation Links (LADIES, MEN, KIDS, HOME) -->
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="hm-category-nav" id="categoryNav">
+                    <div class="nav-item-wrapper" data-menu="ladies">
+                        <a href="index.html" class="nav-link" data-category="ladies">LADIES</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="men">
+                        <a href="men.html" class="nav-link" data-category="men">MEN</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="kids">
+                        <a href="kids.html" class="nav-link" data-category="kids">KIDS</a>
+                    </div>
+                    <div class="nav-item-wrapper" data-menu="home">
+                        <a href="home.html" class="nav-link" data-category="home">HOME</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Middle: Brand Logo Centered -->
+            <div class="header-center">
+                <a href="index.html" class="cosmo-logo-link" id="logoLink" aria-label="COSMO Home">
+                    <span class="cosmo-brand-logo">COSMO</span>
+                </a>
+            </div>
+
+            <!-- Right: Text Nav (ACCOUNT, SEARCH, FAV ICON, CART [0]) -->
+            <div class="header-right">
+                <button class="header-nav-text-btn" id="accountModalBtn" aria-label="Account">ACCOUNT</button>
+                <button class="header-nav-text-btn" id="searchTriggerBtn" aria-label="Search">SEARCH</button>
+                <a href="cart.html" class="header-nav-text-btn" id="bagTriggerBtn" aria-label="Shopping Cart">CART [<span id="bagBadge">0</span>]</a>
+                <button class="header-fav-btn" id="wishlistTriggerBtn" aria-label="Favorites">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="header-badge" id="wishlistBadge">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mega Menu Dropdown -->
+        <div class="hm-mega-menu" id="hmMegaMenu">
+            <div class="mega-menu-content" id="megaMenuContent"></div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="hm-breadcrumb-bar">
+        <div class="breadcrumb-container">
+            <a href="index.html" class="breadcrumb-link">COSMO.COM</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">SHOPPING BAG</span>
+        </div>
+    </div>
+
+    <!-- Main Shopping Bag & Checkout Container -->
+    <main class="cart-main-container">
+        <div class="cart-header-title-row">
+            <h1 class="cart-headline">SHOPPING BAG <span id="cartCountTitleSpan"
+                    style="font-size: 1.4rem; font-weight: 500; color: #777;">(0)</span></h1>
+        </div>
+
+        <div class="cart-layout-grid">
+            <!-- Left: Cart Items List -->
+            <div class="cart-items-column" id="cartItemsColumn">
+                <div id="cartItemsList">
+                    <!-- Items rendered dynamically via JS -->
+                </div>
+
+                <!-- Empty State (hidden when items exist) -->
+                <div class="cart-empty-state" id="cartEmptyState" style="display: none;">
+                    <div class="cart-empty-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <h3>YOUR SHOPPING BAG IS EMPTY</h3>
+                    <p>Discover our latest arrivals and timeless wardrobe staples.</p>
+                    <a href="index.html" class="checkout-primary-btn"
+                        style="display: inline-block; width: auto; padding: 14px 28px;">EXPLORE NEW ARRIVALS</a>
+                </div>
+            </div>
+
+            <!-- Right: Order Summary & Checkout Trigger -->
+            <div class="cart-summary-column">
+                <h3 class="summary-heading">ORDER SUMMARY</h3>
+
+                <!-- Discounts & Coupons Accordion -->
+                <div class="promo-code-section">
+                    <div class="promo-toggle-btn" id="promoToggleBtn">
+                        <span>DISCOUNTS / PROMO CODE</span>
+                        <span id="promoToggleIcon" style="font-size: 0.9rem;">+</span>
+                    </div>
+                    <div class="promo-input-group" id="promoInputGroup">
+                        <input type="text" id="promoCodeInput" class="promo-input"
+                            placeholder="Enter code (e.g. COSMO10)">
+                        <button type="button" id="applyPromoBtn" class="promo-apply-btn">APPLY</button>
+                    </div>
+                    <div class="promo-applied-badge" id="promoAppliedBadge">
+                        <span id="promoBadgeText">Code COSMO10 Applied (-10%)</span>
+                        <button type="button" id="removePromoBtn"
+                            style="background:none; border:none; cursor:pointer; font-weight:bold; color:#c62828;">✕</button>
+                    </div>
+                </div>
+
+                <!-- Summary Breakdown Rows -->
+                <div class="summary-rows-list">
+                    <div class="summary-row">
+                        <span>Order value:</span>
+                        <span id="cartSubtotalText">Rs. 0.00</span>
+                    </div>
+                    <div class="summary-row" id="cartDiscountRow" style="display: none;">
+                        <span>Discount:</span>
+                        <span id="cartDiscountText" class="discount-saving-text">- Rs. 0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Estimated delivery:</span>
+                        <span id="cartDeliveryText" class="free-tag">FREE</span>
+                    </div>
+                    <div class="summary-row total-bold-row">
+                        <span>TOTAL:</span>
+                        <span id="cartTotalText">Rs. 0.00</span>
+                    </div>
+                </div>
+
+                <!-- Primary CTA -->
+                <button type="button" class="checkout-primary-btn" id="openCheckoutModalBtn">CONTINUE TO
+                    CHECKOUT</button>
+                <button type="button" class="checkout-signin-btn" id="cartSignInBtn">SIGN IN AS MEMBER</button>
+
+                <!-- Accepted Payment Badges -->
+                <div class="summary-payment-logos">
+                    <span class="payment-badge-pill">VISA</span>
+                    <span class="payment-badge-pill">Mastercard</span>
+                    <span class="payment-badge-pill">UPI / QR</span>
+                    <span class="payment-badge-pill">Cash On Delivery</span>
+                </div>
+
+                <div class="summary-policies-text">
+                    <p>Prices and delivery costs are confirmed during checkout.</p>
+                    <p style="margin-top: 6px;">15 days free returns. Read our <a href="#">return and refund policy</a>.
+                    </p>
+                    <p style="margin-top: 6px;">Need help? Contact <a href="#">Customer Support</a>.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Interactive Payment & Checkout Modal -->
+    <div class="checkout-modal-overlay" id="checkoutModalOverlay">
+        <div class="checkout-modal-card" id="checkoutModalCard">
+            <button class="modal-close-icon" id="closeCheckoutModalBtn" aria-label="Close checkout">✕</button>
+
+            <!-- Checkout Form Step -->
+            <div id="checkoutFormStep">
+                <div class="checkout-step-header">
+                    <h2 class="checkout-step-title">SECURE CHECKOUT & PAYMENT</h2>
+                    <span style="font-size: 0.8rem; color: #2e7d32; font-weight: 700;">256-Bit SSL Encrypted</span>
+                </div>
+
+                <form id="completeCheckoutForm">
+                    <!-- 1. Shipping Address -->
+                    <div class="checkout-form-section">
+                        <h4>1. Delivery Address</h4>
+                        <div class="form-grid-2" style="margin-bottom: 12px;">
+                            <input type="text" required class="checkout-input-field" id="custName"
+                                placeholder="Full Name *">
+                            <input type="tel" required class="checkout-input-field" id="custPhone"
+                                placeholder="Phone Number (10 digits) *">
+                        </div>
+                        <input type="text" required class="checkout-input-field" id="custAddress"
+                            placeholder="Street Address, House/Flat No. *" style="margin-bottom: 12px;">
+                        <div class="form-grid-2">
+                            <input type="text" required class="checkout-input-field" id="custCity" placeholder="City *">
+                            <input type="text" required class="checkout-input-field" id="custPincode"
+                                placeholder="PIN Code *">
+                        </div>
+                    </div>
+
+                    <!-- 2. Payment Method Selector -->
+                    <div class="checkout-form-section">
+                        <h4>2. Select Payment Method</h4>
+                        <div class="payment-methods-grid">
+                            <!-- Option 1: UPI -->
+                            <label class="payment-method-card selected" id="optUpi">
+                                <input type="radio" name="paymentMethod" value="upi" checked>
+                                <div class="payment-method-info">
+                                    <div class="title">
+                                        <span>UPI / Instant QR Code</span>
+                                        <span style="font-size: 0.75rem; color: #2e7d32;">Zero Fee</span>
+                                    </div>
+                                    <div class="subtitle">Google Pay, PhonePe, Paytm, BHIM & UPI ID</div>
+                                    <div class="payment-details-panel">
+                                        <div class="upi-qr-preview">
+                                            <svg width="100" height="100" viewBox="0 0 100 100"
+                                                style="margin: 0 auto; display:block;">
+                                                <rect width="100" height="100" fill="#ffffff" />
+                                                <path
+                                                    d="M10 10h30v30h-30z M15 15h20v20h-20z M20 20h10v10h-10z M60 10h30v30h-30z M65 15h20v20h-20z M70 20h10v10h-10z M10 60h30v30h-30z M15 65h20v20h-20z M20 70h10v10h-10z M50 20h5v15h-5z M50 55h15v5h-15z M70 60h20v5h-20z M60 75h10v15h-10z M80 75h10v15h-10z M50 80h5v10h-5z"
+                                                    fill="#000000" />
+                                            </svg>
+                                            <div style="font-size: 0.72rem; color: #555; margin-top: 4px;">Scan with any
+                                                UPI app to pay instantly</div>
+                                        </div>
+                                        <input type="text" class="checkout-input-field"
+                                            placeholder="Or enter UPI ID (e.g. mobile@upi)" style="margin-top: 8px;">
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Option 2: Cash on Delivery (COD) -->
+                            <label class="payment-method-card" id="optCod">
+                                <input type="radio" name="paymentMethod" value="cod">
+                                <div class="payment-method-info">
+                                    <div class="title">
+                                        <span>Cash On Delivery (COD)</span>
+                                        <span style="font-size: 0.75rem; color: #555;">Pay at Doorstep</span>
+                                    </div>
+                                    <div class="subtitle">Pay with Cash, UPI, or Card upon parcel delivery</div>
+                                    <div class="payment-details-panel">
+                                        <div
+                                            style="font-size: 0.75rem; color: #444; background:#f5f5f5; padding: 10px; border-radius: 2px;">
+                                            Exact cash or UPI QR code will be provided by delivery executive.
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Option 3: Credit / Debit Card -->
+                            <label class="payment-method-card" id="optCard">
+                                <input type="radio" name="paymentMethod" value="card">
+                                <div class="payment-method-info">
+                                    <div class="title">
+                                        <span>Credit / Debit Card</span>
+                                        <span style="font-size: 0.75rem; color: #555;">Visa, MC, RuPay</span>
+                                    </div>
+                                    <div class="subtitle">All major Indian and international cards accepted</div>
+                                    <div class="payment-details-panel">
+                                        <input type="text" class="checkout-input-field"
+                                            placeholder="Card Number (16 digits)" style="margin-bottom: 8px;"
+                                            maxlength="19">
+                                        <div class="form-grid-2">
+                                            <input type="text" class="checkout-input-field" placeholder="MM / YY"
+                                                maxlength="5">
+                                            <input type="password" class="checkout-input-field"
+                                                placeholder="CVV (3 digits)" maxlength="4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Option 4: Net Banking -->
+                            <label class="payment-method-card" id="optNetbanking">
+                                <input type="radio" name="paymentMethod" value="netbanking">
+                                <div class="payment-method-info">
+                                    <div class="title">
+                                        <span>Net Banking</span>
+                                    </div>
+                                    <div class="subtitle">HDFC, ICICI, SBI, Axis, Kotak & 50+ Banks</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Final Amount & Submit -->
+                    <div
+                        style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-size: 0.75rem; color: #777;">Total Payable:</div>
+                            <div style="font-size: 1.25rem; font-weight: 800; color: #111;" id="modalPayableTotal">Rs.
+                                0.00</div>
+                        </div>
+                        <button type="submit" class="checkout-primary-btn"
+                            style="width: auto; padding: 14px 32px; margin-bottom: 0;">PLACE ORDER &rarr;</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Order Success Confirmation Step (shown after submitting) -->
+            <div id="checkoutSuccessStep" style="display: none;">
+                <div class="order-success-card">
+                    <div class="success-icon-badge">✓</div>
+                    <h2>ORDER CONFIRMED!</h2>
+                    <p>Thank you for shopping with <strong>COSMO</strong>. Your order has been placed successfully.</p>
+                    <div class="order-id-highlight" id="confirmedOrderId">ORDER ID: #CSM-892401</div>
+                    <div style="font-size: 0.8rem; color: #555; margin-bottom: 24px;">
+                        An order confirmation with tracking details has been sent to your mobile number.
+                    </div>
+                    <a href="index.html" class="checkout-primary-btn"
+                        style="display: inline-block; width: auto; padding: 14px 32px;">CONTINUE SHOPPING</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COSMO Sign-In Modal -->
+    <div class="hm-modal-overlay" id="signInModalOverlay">
+        <div class="hm-signin-modal" id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signinTitle">
+            <button class="modal-close-icon" id="closeSignInModalBtn" aria-label="Close modal">✕</button>
+            <div class="signin-modal-content">
+                <h2 class="signin-title" id="signinTitle">SIGN IN</h2>
+                <p class="signin-subtitle">Sign in with your email or sign up to become a COSMO member.</p>
+                <form class="signin-form" id="signInForm">
+                    <div class="form-group">
+                        <label for="signinEmail" class="form-label">Email address *</label>
+                        <input type="email" id="signinEmail" required class="signin-input"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signinPassword" class="form-label">Password *</label>
+                        <input type="password" id="signinPassword" required class="signin-input" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="signin-submit-btn">SIGN IN</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- COSMO Wishlist Drawer -->
+    <div class="hm-wishlist-drawer" id="hmWishlistDrawer" aria-hidden="true">
+        <div class="bag-header">
+            <h3 class="bag-title">FAVORITES</h3>
+            <button class="bag-close-btn" id="closeWishlistDrawerBtn" aria-label="Close favorites">✕</button>
+        </div>
+        <div class="wishlist-items-list" id="wishlistItemsList"></div>
+    </div>
+
+    <!-- Global Dimming Backdrop -->
+    <div class="global-backdrop" id="globalBackdrop"></div>
+
+    <!-- Toast Notification -->
+    <div class="hm-toast" id="hmToast" role="status" aria-live="polite">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <div class="toast-msg" id="toastMsg">Action updated</div>
+    </div>
+
+    <!-- Dynamic Modular Footer -->
+    <div id="footerPlaceholder"></div>
+
+    <!-- Main Storefront JS -->
+    <script src="main.js"></script>
+</body>
+
+</html>
