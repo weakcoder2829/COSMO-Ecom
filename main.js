@@ -1067,6 +1067,43 @@ const megaMenuData = {
 };
 
 // ==========================================================================
+// 3.5. AUTOMATIC SYSTEM THEME SYNC (MOBILE & PC)
+// Automatically switches between dark and light themes based on the device's
+// OS preference (prefers-color-scheme) without displaying any button.
+// ==========================================================================
+function initAutoThemeSync() {
+    if (!window.matchMedia) return;
+
+    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function applyThemeFromPreference(e) {
+        const isDark = (e && typeof e.matches === 'boolean') ? e.matches : colorSchemeQuery.matches;
+        if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+    }
+
+    // Apply immediately upon execution
+    applyThemeFromPreference(colorSchemeQuery);
+
+    // Live listener for real-time mobile/desktop theme changes
+    try {
+        colorSchemeQuery.addEventListener('change', applyThemeFromPreference);
+    } catch (err) {
+        try {
+            colorSchemeQuery.addListener(applyThemeFromPreference);
+        } catch (e2) {
+            // Older browser fallback
+        }
+    }
+}
+
+// Run immediately upon script load
+initAutoThemeSync();
+
+// ==========================================================================
 // 4. APPLICATION INITIALIZATION & MODULAR FOOTER
 // ==========================================================================
 async function loadModularFooter() {
@@ -1244,6 +1281,7 @@ function initFooterAccordion() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    initAutoThemeSync();
     state.selectedCategory = getCurrentPageCategory();
 
     // Check URL parameters for search query
@@ -2836,7 +2874,7 @@ function updateUserHeaderState() {
         accountBtn.style.color = '#E50010';
     } else {
         accountBtn.title = 'Sign In / Account';
-        accountBtn.style.color = '#000000';
+        accountBtn.style.color = '';
     }
 }
 
@@ -3134,7 +3172,7 @@ function renderCartPage() {
                             </div>
                             <div class="cart-item-meta-row" style="align-items: center;">
                                 <span class="cart-item-meta-label">Size:</span>
-                                <select class="cart-size-select" onchange="updateCartItemSize(${item.id}, this.value)" style="padding: 2px 6px; font-size: 0.78rem; border: 1px solid #ccc; background:#fff; font-family:inherit; cursor:pointer;">
+                                <select class="cart-size-select" onchange="updateCartItemSize(${item.id}, this.value)">
                                     ${sizesOptions}
                                 </select>
                             </div>

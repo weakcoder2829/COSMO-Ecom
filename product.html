@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -13,9 +13,21 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Auto System Dark/Light Theme Sync (Instant Zero-FOUC) -->
+    <script>
+        (function () {
+            try {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 
-<body data-page="product" data-theme="light" class="pdp-body">
+<body data-page="product" class="pdp-body">
     <!-- Main Navigation Header (Exact Pure White COSMO Header) -->
     <header class="hm-header" id="hmHeader">
         <div class="header-container">
