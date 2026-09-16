@@ -118,7 +118,9 @@ img {
 }
 
 /* Editorial Headings (Cormorant Garamond / Ogg aesthetic) */
-h1, h2, h3,
+h1,
+h2,
+h3,
 .editorial-title,
 .hero-editorial-title,
 .pdp-title,
@@ -530,8 +532,8 @@ body:not([data-page="ladies"]):not([data-page="men"]):not([data-page="kids"]):no
     display: none;
 }
 
-.search-box-wrapper > .search-input-box,
-.search-box-wrapper > .search-dropdown {
+.search-box-wrapper>.search-input-box,
+.search-box-wrapper>.search-dropdown {
     display: none !important;
 }
 
