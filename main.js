@@ -734,8 +734,8 @@ const productsData = [
         name: "Pedestal Flower Vase",
         category: "home",
         subCategory: "decor",
-        price: 4999,
-        originalPrice: null,
+        price: 2199,
+        originalPrice: 3199,
         colors: ["Matte Charcoal Black", "Cast Bronze"],
         sizes: ["H 30cm x Dia 18cm"],
         imageFront: "images/hgfd.jpg",
@@ -800,11 +800,11 @@ const productsData = [
     // --------------------------------------------------------------------------
     {
         id: 101,
-        name: "Plaid Blouse Set",
+        name: "Checked Draped Tie-Waist Blouse",
         category: "ladies",
         subCategory: "tops",
-        price: 6499,
-        originalPrice: 8499,
+        price: 1499,
+        originalPrice: 2499,
         colors: ["Sage / Grey Check", "Brown Tartan Plaid", "Monochrome"],
         sizes: ["XS", "S", "M", "L", "XL"],
         imageFront: "images/s.png",
@@ -813,15 +813,32 @@ const productsData = [
         reviewCount: 285,
         isNew: true,
         isBannerOnly: true,
-        description: "COSMO Editorial Campaign Look. Fluid checked shirt blouse featuring an integrated draped tie-front waist knot, classic point collar, dropped shoulders, and buttoned cuffs, styled in a coordinated ensemble with an asymmetric handkerchief-hem tartan midi skirt."
+        description: "COSMO Women Editorial Campaign Look. Fluid checked shirt blouse in premium woven cotton featuring an integrated draped tie-front waist knot, classic point collar, dropped shoulders, and buttoned cuffs as featured in the hero editorial campaign."
+    },
+    {
+        id: 102,
+        name: "Asymmetric Tartan Plaid Midi Skirt",
+        category: "ladies",
+        subCategory: "bottoms",
+        price: 2299,
+        originalPrice: 3299,
+        colors: ["Brown Tartan Plaid", "Sage Check", "Monochrome"],
+        sizes: ["34", "36", "38", "40", "42"],
+        imageFront: "images/s.png",
+        imageBack: "images/s.png",
+        rating: 4.9,
+        reviewCount: 194,
+        isNew: true,
+        isBannerOnly: true,
+        description: "COSMO Women Editorial Campaign Look. Asymmetric handkerchief-hem midi skirt in heritage tartan plaid weave, featuring an elegant flared silhouette, high-rise structured waistband, and fluid drape as featured in the hero editorial campaign."
     },
     {
         id: 299,
-        name: "Minimalist Bomber Set",
+        name: "Minimalist Stand-Collar Bomber Jacket",
         category: "men",
         subCategory: "outerwear",
-        price: 7499,
-        originalPrice: 9499,
+        price: 2299,
+        originalPrice: 3499,
         colors: ["Matte Black", "Slate Charcoal"],
         sizes: ["S", "M", "L", "XL", "XXL"],
         imageFront: "images/h.png",
@@ -830,15 +847,32 @@ const productsData = [
         reviewCount: 230,
         isNew: true,
         isBannerOnly: true,
-        description: "COSMO Men Hero Editorial Campaign. Technical stand-collar zip-up bomber jacket in structured matte black weave with two-way silver zipper, zippered side pockets, and elasticated hem, coordinated with relaxed wide-leg front-pleated suiting trousers."
+        description: "COSMO Men Hero Editorial Campaign. Technical stand-collar zip-up bomber jacket in structured matte black weave with two-way silver zipper, zippered side pockets, and elasticated hem as featured in the hero editorial campaign."
+    },
+    {
+        id: 298,
+        name: "Wide-Leg Pleated Trousers",
+        category: "men",
+        subCategory: "bottoms",
+        price: 1999,
+        originalPrice: 2999,
+        colors: ["Matte Black", "Slate Charcoal"],
+        sizes: ["30", "32", "34", "36"],
+        imageFront: "images/h.png",
+        imageBack: "images/h.png",
+        rating: 4.8,
+        reviewCount: 175,
+        isNew: true,
+        isBannerOnly: true,
+        description: "COSMO Men Hero Editorial Campaign Look. Relaxed wide-leg front-pleated suiting trousers tailored in clean draping twill with slanted pockets and sleek finish as featured in the hero campaign."
     },
     {
         id: 399,
         name: "Varsity Baseball Jacket",
         category: "kids",
         subCategory: "outerwear",
-        price: 5999,
-        originalPrice: 7999,
+        price: 1999,
+        originalPrice: 2999,
         colors: ["Chocolate Brown / Cream", "Midnight Navy / White"],
         sizes: ["92/98", "104/110", "116/122", "128/134", "140"],
         imageFront: "images/m.jpg",
@@ -1325,8 +1359,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelectorAll('.hotspot-tag-card').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const match = btn.getAttribute('onclick') ? btn.getAttribute('onclick').match(/\d+/) : null;
-            const targetId = match ? match[0] : (getCurrentPageCategory() === 'men' ? 299 : (getCurrentPageCategory() === 'kids' ? 399 : (getCurrentPageCategory() === 'home' ? 409 : 101)));
+            const onclickAttr = btn.getAttribute('onclick') || '';
+            const match = onclickAttr.match(/id=(\d+)/) || onclickAttr.match(/\d+/);
+            const targetId = match ? (match[1] || match[0]) : (getCurrentPageCategory() === 'men' ? 299 : (getCurrentPageCategory() === 'kids' ? 399 : (getCurrentPageCategory() === 'home' ? 409 : 101)));
             window.location.href = `product.html?id=${targetId}`;
         });
     });
