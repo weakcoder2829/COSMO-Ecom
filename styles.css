@@ -1697,13 +1697,13 @@ body:not([data-page="ladies"]):not([data-page="men"]):not([data-page="kids"]):no
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6px;
+    padding: 0;
 }
 
 .product-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     background-color: #ffffff;
     transition: transform 0.3s ease;
@@ -3298,7 +3298,7 @@ body:not([data-page="ladies"]):not([data-page="men"]):not([data-page="kids"]):no
     }
 
     .hm-product-card {
-        padding: 4px;
+        padding: 0;
     }
 
     /* 4 Editorial Campaign Category Cards (Screenshot 1: Full-Width Stack) */
@@ -5254,15 +5254,20 @@ body:not([data-page="ladies"]):not([data-page="men"]):not([data-page="kids"]):no
     background: var(--theme-bg-card);
     border: 1px solid var(--theme-border);
     border-radius: 4px;
+    overflow: hidden;
 }
 
 [data-theme="dark"] .product-image-container {
     background-color: #16161a;
-    border-bottom: 1px solid var(--theme-border-subtle);
+    border-bottom: none;
+    padding: 0;
 }
 
 [data-theme="dark"] .product-img {
-    background-color: #16161a;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 [data-theme="dark"] .product-card-title {
@@ -6221,21 +6226,22 @@ body.pdp-body {
     position: relative;
     width: 100%;
     aspect-ratio: 3/4;
-    background-color: #f7f7f8;
+    background-color: #ffffff;
     border-radius: 4px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+    padding: 0;
 }
 
 .pdp-gallery-img {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: contain;
-    padding: 24px;
+    object-fit: cover;
+    padding: 0;
     transition: transform 0.4s ease;
 }
 
